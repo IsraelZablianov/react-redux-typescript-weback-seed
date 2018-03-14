@@ -1,0 +1,6 @@
+const HelloConstants = {
+    INCREMENT_ENTHUSIASM: 'INCREMENT_ENTHUSIASM',
+    DECREMENT_ENTHUSIASM: 'DECREMENT_ENTHUSIASM'
+};
+
+export default HelloConstants;
