@@ -20,7 +20,7 @@ export default class App extends React.Component<AppProps, AppState> {
                     <h2>Welcome to React</h2>
                 </div>
                 <p className="app-intro">
-                    To get started, edit <code>src/App.tsx</code> and save to reload.
+                    To get started, edit <code>src/components/App.tsx</code> and save to reload.
               </p>
                 <HelloContainer />
             </div>
