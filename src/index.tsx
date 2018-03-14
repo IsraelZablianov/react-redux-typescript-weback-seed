@@ -1,22 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
-import Hello from './containers/Hello';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { enthusiasm } from './reducers/index';
-import { StoreState } from './types/index';
-
-import './index.css';
-
-const store = createStore<StoreState>(enthusiasm, {
-  enthusiasmLevel: 1,
-  languageName: 'TypeScript',
-});
+import { store } from './reducer/index';
+import App from "./components/app/app";
+import './index.less';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Hello />
+    <App />
   </Provider>,
   document.getElementById('root') as HTMLElement
 );
