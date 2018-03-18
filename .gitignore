@@ -15,8 +15,8 @@
 npm-debug.log
 
 # generated files
-*.js
-*.jsx
-*.css
+src/**/*.js
+src/**/*.jsx
+src/**/*.css
 
 
