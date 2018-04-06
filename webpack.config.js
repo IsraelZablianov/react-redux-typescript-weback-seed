@@ -1,25 +1,23 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: {
-        app: "./src/index.tsx"
-    },
+    entry: "./src/index.tsx",
     output: {
-        filename: "bundle.js",
-        path: __dirname + "/dist"
+        filename: "index.js",
+        path: path.resolve(__dirname, './dist'),
+        publicPath: 'dist/',
     },
     devtool: "source-map",
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".json"]
     },
     module: {
-        rules: [{
+        rules: [
+        {
             test: /\.(png|jpg|gif|svg)$/,
-            use: [
-                {
-                    loader: 'url-loader',
-                }
-            ]
+            loader: 'url-loader'
         },
         {
             test: /\.html$/,
@@ -27,9 +25,7 @@ module.exports = {
         },
         {
             test: /\.tsx?$/,
-            use: [{
-                loader: "ts-loader"
-            }]
+            loader: "ts-loader"
         },
         {
             test: /\.(less$|css)/,
@@ -43,9 +39,15 @@ module.exports = {
         }
         ]
     },
+    devServer: {
+        hot: true,
+        stats: 'minimal'
+    },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html'
-        })
+        new CopyWebpackPlugin([
+            { from: 'src/assets', to: 'assets' }
+        ]),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin()
     ]
 };
