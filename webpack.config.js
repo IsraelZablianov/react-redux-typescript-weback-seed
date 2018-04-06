@@ -15,29 +15,35 @@ module.exports = {
     },
     module: {
         rules: [
-        {
-            test: /\.(png|jpg|gif|svg)$/,
-            loader: 'url-loader'
-        },
-        {
-            test: /\.html$/,
-            loader: 'html-loader'
-        },
-        {
-            test: /\.tsx?$/,
-            loader: "ts-loader"
-        },
-        {
-            test: /\.(less$|css)/,
-            use: [{
-                loader: "style-loader" // creates style nodes from JS strings
-            }, {
-                loader: "css-loader" // translates CSS into CommonJS
-            }, {
-                loader: "less-loader" // compiles Less to CSS
-            }]
-        }
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'url-loader',
+                options: {
+                    name: '[name].[ext]?[hash]'
+                }
+            },
+            {
+                test: /\.html$/,
+                loader: 'html-loader'
+            },
+            {
+                test: /\.tsx?$/,
+                loader: "ts-loader"
+            },
+            {
+                test: /\.(less$|css)/,
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "less-loader" // compiles Less to CSS
+                }]
+            }
         ]
+    },
+    performance: { 
+        hints: false
     },
     devServer: {
         hot: true,
